@@ -20,6 +20,10 @@ public class Trader {
 		pw = p;
 	}
 	
+	public String getName() {
+		return un;
+	}
+	
 	public String toString() {
 		return brokerage +" : " + un;
 	}

@@ -29,8 +29,14 @@ public class Brokerage implements Login{
 	
 	public int login(String name, String password) {
 		Trader trader = registeredTraders.get(name);
-		loggedInTraders.add(trader);
+		if(registeredTraders.containsValue(trader)
+		
 		return 0;
+		loggedInTraders.add(trader);
+	}
+	
+	public void logout(Trader trader) {
+		loggedInTraders.remove(trader);
 	}
 
 }

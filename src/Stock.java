@@ -16,8 +16,8 @@ public class Stock implements Comparable<Stock> {
 	private double price;
 	private double lowPrice, highPrice, lastPrice;
 	
-	private PriorityQueue<TradeOrder> buyOrders();
-	private PriorityQueue<TradeOrder> sellOrders();
+	private PriorityQueue<TradeOrder> buyOrders;
+	private PriorityQueue<TradeOrder> sellOrders;
 	
 	public static DecimalFormat money = new DecimalFormat("$#,##0.00");
 	
@@ -42,7 +42,7 @@ public class Stock implements Comparable<Stock> {
 	@Override
 	public int compareTo(Stock arg0) {
 		// TODO Auto-generated method stub
-		return (int) (lastPrice - s.lastPrice);
+		return (int) (lastPrice - this.lastPrice);
 	}
 	
 }
