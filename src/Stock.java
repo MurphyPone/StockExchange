@@ -14,7 +14,7 @@ public class Stock implements Comparable<Stock> {
 	private String symbol;
 	private String name;
 	private double price;
-	private double lowPrice, highPrice, lastPrice;
+	private double lowPrice, highPrice, lastPrice, dayVolume;
 	
 	private PriorityQueue<TradeOrder> buyOrders;
 	private PriorityQueue<TradeOrder> sellOrders;
@@ -24,13 +24,17 @@ public class Stock implements Comparable<Stock> {
 	Stock(String s, String n, double p) {
 		symbol = s;
 		name = n;
-		price = p;
 		
+		price = p;
 		lowPrice = p;
 		highPrice = p;
 		lastPrice = p;
+		dayVolume = 0;
 	}
 	
+	public String getQuote() {
+		return name + " (" + symbol + ") \n Price: " + price + "hi: " + lowPrice +"hi: " + ;
+	}
 	
 	public void placeOrder(TradeOrder order) {
 		
@@ -39,6 +43,7 @@ public class Stock implements Comparable<Stock> {
 	public String toString() {
 		return symbol + " " + name + " " + money.format(price); 
 	}
+	
 	@Override
 	public int compareTo(Stock arg0) {
 		// TODO Auto-generated method stub

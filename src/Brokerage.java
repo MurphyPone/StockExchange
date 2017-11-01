@@ -30,29 +30,22 @@ public class Brokerage implements Login {	//Login interface?
 	public int login(String name, String password) {
 		Trader trader = registeredTraders.get(name);
 		
-		if(registeredTraders.containsValue(trader) ) {
-			trader.openWindow();
-			loggedInTraders.add(trader);
-			return 0; 	//Successful login
-		} 
-		
-		if(!registeredTraders.containsKey(trader)) {	//Name not found
+		if(trader == null )
 			return -1;
-		}
-		
-		if(!registeredTraders.containsValue(trader)) {	//pw not found
+		String storedPassword = trader.getPassword();
+		if(!storedPassword.equals(password))
 			return -2;
-		}
-		
-		if(registeredTraders.containsKey(trader) && registeredTraders.containsKey(trader) ) {	//Both credentials already exist?... this will not work
+		if(registeredTraders.containsValue(trader))
 			return -3;
-		}
 		
+		loggedInTraders.add(trader);
+		return 0;
 		//TODO if no messages waiting, then send a welcom msg, otherwise display waiting msgs
 	}
 	
 	public void logout(Trader trader) {
-		loggedInTraders.remove(trader);
+		if(registeredTraders.containsValue(trader))
+			loggedInTraders.remove(trader);
 	}
 
 }

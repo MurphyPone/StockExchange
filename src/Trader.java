@@ -24,6 +24,10 @@ public class Trader {
 		return un;
 	}
 	
+	public String getPassword() {
+		return pw;
+	}
+	
 	public String toString() {
 		return brokerage +" : " + un;
 	}
