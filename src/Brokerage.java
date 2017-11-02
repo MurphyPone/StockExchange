@@ -3,12 +3,18 @@ import java.util.TreeSet;
 
 //Collection of maps and sets of users and stocks
 public class Brokerage implements Login {	//Login interface?
+	private StockExchange exchange;
 	private TreeMap<String, Trader> registeredTraders;
 	private TreeSet<Trader> loggedInTraders;
 	
-	public Brokerage() {
+	public Brokerage(StockExchange exch) {
+		exchange = exch;
 		registeredTraders = new TreeMap<String, Trader>();
 		loggedInTraders = new TreeSet<Trader>();
+	}
+	
+	public void getQuote(String symbol, Trader trader) {
+		//TODO WAT
 	}
 	
 	public int addUser(String name, String password) {
@@ -46,6 +52,10 @@ public class Brokerage implements Login {	//Login interface?
 	public void logout(Trader trader) {
 		if(registeredTraders.containsValue(trader))
 			loggedInTraders.remove(trader);
+	}
+	
+	public void placeOrder(TradeOrder order) {
+		//places order in Stuck Exchanke
 	}
 
 }

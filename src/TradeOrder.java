@@ -32,4 +32,20 @@ public class TradeOrder {
 		
 		return symbol + "\n" + buyOrSell + "\n" + shares + "\n" + marketOrLim + "\n" + Stock.money.format(price);
 	}
+
+	public boolean isMarket() {
+		return market;
+	}
+	
+	public boolean isLimit() {
+		return !market;
+	}
+	
+	public double getPrice() {
+		return price;
+	}
+	
+	public void subtractShares(int shares) {
+
+	}
 }
