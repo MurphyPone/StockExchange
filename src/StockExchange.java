@@ -16,7 +16,7 @@ public class StockExchange {
 	public void listStock(String symbol, String name, double price) {
 		listedStocks.add(new Stock(symbol, name, price));
 	}
-	
+	 
 	public void placeOrder(TradeOrder order) {	//Is a trade order a plural amount of individual stocks? Why do they have such similar fields?! :(
 		order.symbol.placeOrder;	//how to get the individual stock based on the symbol
 	}
