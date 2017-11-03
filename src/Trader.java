@@ -6,6 +6,7 @@
  * @author MurphyP1
  *
  */
+import java.util.ArrayList;
 
 //Where all the login info is stored
 public class Trader implements Comparable<Trader> {
@@ -13,11 +14,14 @@ public class Trader implements Comparable<Trader> {
 	private Brokerage brokerage;
 	private String un;
 	private String pw;
+	private ArrayList<String> mailbox;
+	private TraderWindow myWindow;
 	
 	public Trader(Brokerage b, String u, String p) {
 		brokerage = b;
 		un = u;
 		pw = p;
+		mailbox = new ArrayList<String>();
 	}
 	
 	public String getName() {
@@ -36,10 +40,27 @@ public class Trader implements Comparable<Trader> {
 		return "this is the user's password in plaintext lol " + pw;
 	}
 	
-	public void getQoute(String symbol) {
+	public void getQuote(String symbol) {
 		brokerage.getQuote(symbol, this);
 	}
 	
+	public boolean hasMessages() {
+		return mailbox.size() > 0;
+	}
+	
+	public void receiveMessage(String msg) {
+		mailbox.add(msg);
+		if(myWindow != null) {
+			for(int i = mailbox.size()-1; i > 0; i--) {
+				myWindow.showMessage(mailbox.remove(i));	//Thanks Patrick
+			}
+		}
+	}
+	
+	//Logout the user
+	public void quit() {
+		brokerage.logout(this);
+	}
 	
 	//TODO help me
 	@Override

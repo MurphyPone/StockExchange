@@ -45,6 +45,47 @@ public class TradeOrder {
 		return price;
 	}
 	
+	
+	public int getShares() {
+		return shares;
+	}
+
+	public void setShares(int shares) {
+		this.shares = shares;
+	}
+
+	public String getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
+
+	public Trader getTrader() {
+		return trader;
+	}
+
+	public void setTrader(Trader trader) {
+		this.trader = trader;
+	}
+
+	public boolean isBuy() {
+		return buy;
+	}
+
+	public void setBuy(boolean buy) {
+		this.buy = buy;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public void setMarket(boolean market) {
+		this.market = market;
+	}
+
 	public void subtractShares(int shares) {
 
 	}

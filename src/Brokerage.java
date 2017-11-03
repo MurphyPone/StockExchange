@@ -7,14 +7,15 @@ public class Brokerage implements Login {	//Login interface?
 	private TreeMap<String, Trader> registeredTraders;
 	private TreeSet<Trader> loggedInTraders;
 	
-	public Brokerage(StockExchange exch) {
-		exchange = exch;
+	//Default Constructor
+	public Brokerage() {
+		exchange = new StockExchange();
 		registeredTraders = new TreeMap<String, Trader>();
 		loggedInTraders = new TreeSet<Trader>();
 	}
 	
 	public void getQuote(String symbol, Trader trader) {
-		//TODO WAT
+		trader.receiveMessage(exchange.getQuote(symbol));
 	}
 	
 	public int addUser(String name, String password) {
@@ -45,8 +46,10 @@ public class Brokerage implements Login {	//Login interface?
 			return -3;
 		
 		loggedInTraders.add(trader);
+		if(!trader.hasMessages())	//If no messages waiting
+			trader.receiveMessage("Welcome to Safe Trade");	//Display welcome
+	
 		return 0;
-		//TODO if no messages waiting, then send a welcom msg, otherwise display waiting msgs
 	}
 	
 	public void logout(Trader trader) {
