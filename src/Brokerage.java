@@ -58,7 +58,7 @@ public class Brokerage implements Login {	//Login interface?
 	}
 	
 	public void placeOrder(TradeOrder order) {
-		//places order in Stuck Exchanke
+		exchange.placeOrder(order);
 	}
 
 }

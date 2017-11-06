@@ -24,6 +24,10 @@ public class Trader implements Comparable<Trader> {
 		mailbox = new ArrayList<String>();
 	}
 	
+	public void placeOrder(TradeOrder order) {
+		brokerage.placeOrder(order);
+	}
+	
 	public String getName() {
 		return un;
 	}

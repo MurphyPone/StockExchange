@@ -15,6 +15,15 @@ public class TradeOrder {
 		market = mrkt;
 	}
 	
+	public TradeOrder(Trader order, String smbl, boolean bOrder, boolean mrktOrder, int nShares, double prc) {
+		this.trader = order;
+		this.symbol = smbl;
+		this.buy = bOrder;
+		this.market = mrktOrder;
+		this.shares = nShares;
+		this.price = prc;
+	}
+	
 	public String toString() {
 		String buyOrSell, marketOrLim;
 		
@@ -87,6 +96,6 @@ public class TradeOrder {
 	}
 
 	public void subtractShares(int shares) {
-
+		//TODO;;;
 	}
 }
