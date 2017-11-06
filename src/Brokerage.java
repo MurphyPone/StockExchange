@@ -14,6 +14,12 @@ public class Brokerage implements Login {	//Login interface?
 		loggedInTraders = new TreeSet<Trader>();
 	}
 	
+	public Brokerage(StockExchange ex) {
+		exchange = ex;
+		registeredTraders = new TreeMap<String, Trader>();
+		loggedInTraders = new TreeSet<Trader>();
+	}
+	
 	public void getQuote(String symbol, Trader trader) {
 		trader.receiveMessage(exchange.getQuote(symbol));
 	}
@@ -24,13 +30,13 @@ public class Brokerage implements Login {	//Login interface?
 			return -1;
 		len = password.length();
 		
-		if (len <2 || len > 10)
+		if (len < 2 || len > 10)
 			return -2;
 		
 		if(registeredTraders.containsKey(name))
 			return -2;
 		
-		registeredTraders.put(name, new Trader(this, password, name));
+		registeredTraders.put(name, new Trader(this, name, password));
 		return 0; //successful 
 	}
 	

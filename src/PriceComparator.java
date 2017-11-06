@@ -21,12 +21,15 @@ public class PriceComparator implements Comparator<TradeOrder> {
 			else 
 				if(t1.isLimit() && t2.isMarket() )
 					return 1;
-				else if(t1.isLimit() && t2.isLimit())
-					if (asc) 
-						return (int) (t2.getPrice() - t1.getPrice()) * 100;
+				else { //Both are limit
+					int pennies1 = (int)(100.0 * t1.getPrice() + 0.5);
+					int pennies2 = (int)(100.0 * t2.getPrice() + 0.5);
+					
+					if(asc)
+						return pennies1 - pennies2;
 					else 
-						return (int) (t1.getPrice() - t2.getPrice()) * 100;
-		return 7;
+						return pennies2 - pennies1;
+				}
 	}
 
 	public boolean isAsc() {

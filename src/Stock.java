@@ -34,7 +34,6 @@ public class Stock implements Comparable<Stock> {
 		
 		buyOrders = new PriorityQueue<TradeOrder>();
 		sellOrders = new PriorityQueue<TradeOrder>();
-		
 	}
 	
 	public String getQuote() {
