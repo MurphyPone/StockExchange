@@ -6,7 +6,8 @@
  * @author MurphyP1
  *
  */
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 //Where all the login info is stored
 public class Trader implements Comparable<Trader> {
@@ -14,14 +15,14 @@ public class Trader implements Comparable<Trader> {
 	private Brokerage brokerage;
 	private String un;
 	private String pw;
-	private ArrayList<String> mailbox;
+	Queue<String> mailbox;
 	private TraderWindow myWindow;
 	
 	public Trader(Brokerage b, String u, String p) {
 		brokerage = b;
 		un = u;
 		pw = p;
-		mailbox = new ArrayList<String>();
+		mailbox = new LinkedList<String>();
 	}
 	
 	public void placeOrder(TradeOrder order) {
@@ -56,7 +57,7 @@ public class Trader implements Comparable<Trader> {
 		mailbox.add(msg);
 		if(myWindow != null) {
 			for(int i = mailbox.size()-1; i > 0; i--) {
-				myWindow.showMessage(mailbox.remove(i));	//Thanks Patrick
+				myWindow.showMessage(mailbox.remove());	//Thanks Patrick
 			}
 		}
 	}

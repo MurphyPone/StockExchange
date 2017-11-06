@@ -96,6 +96,6 @@ public class TradeOrder {
 	}
 
 	public void subtractShares(int shares) {
-		//TODO;;;
+		this.shares -= shares;
 	}
 }

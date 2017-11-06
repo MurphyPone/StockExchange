@@ -48,12 +48,36 @@ public class Stock implements Comparable<Stock> {
 	}
 	
 	public String toString() {
-		return symbol + " " + name + " " + money.format(price); 
+		String result = "";
+		
+		if(!sellOrders.isEmpty()) {
+			TradeOrder order = sellOrders.peek();
+			if(order.isLimit())
+				result+= money.format(order.getPrice());
+			else 
+				result += " size: " + order.getShares();
+		} else {
+			result += "none";
+		}
+		
+		result += " Bid: ";
+
+		if(!buyOrders.isEmpty()) {
+			TradeOrder order = buyOrders.peek();
+			if(order.isLimit()) 
+				result += money.format(order.getPrice());
+			else 
+				result += "market";
+			result += " size: " + order.getShares();
+		} else {
+			result += "none";
+		}
+		
+		return result;
 	}
 	
 	@Override
 	public int compareTo(Stock arg0) {
-		// TODO Auto-generated method stub
 		return (int) (lastPrice - this.lastPrice);
 	}
 	
