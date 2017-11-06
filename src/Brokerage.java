@@ -54,7 +54,7 @@ public class Brokerage implements Login {	//Login interface?
 		loggedInTraders.add(trader);
 		if(!trader.hasMessages())	//If no messages waiting
 			trader.receiveMessage("Welcome to Safe Trade");	//Display welcome
-	
+		trader.openWindow();
 		return 0;
 	}
 	

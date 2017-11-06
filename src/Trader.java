@@ -62,6 +62,10 @@ public class Trader implements Comparable<Trader> {
 		}
 	}
 	
+	public void openWindow() {
+		myWindow = new TraderWindow(this);
+	}
+	
 	//Logout the user
 	public void quit() {
 		brokerage.logout(this);
